@@ -1,0 +1,10 @@
+.gitignore
+coverage/
+test/
+util/
+.vscode/
+.eslintrc.js
+.travis.yml
+.mocharc.json
+.prettierrc
+.env
