@@ -1,9 +1,15 @@
+export interface Address {
+  address: string;
+  memo?: string;
+  chain: string;
+}
+
 export interface KucoinResponse<T> {
   code: ResponseCode;
   data: T;
 }
 
-export interface PageQuery {
+export interface AccountPageQuery {
   startAt?: number;
   endAt?: number;
   type?:
@@ -18,9 +24,72 @@ export interface PageQuery {
   currency?: string;
 }
 
+export type RefAccountType = "MAIN" | "TRADE";
+export type Status = "PROCESSING" | "SUCCESS" | "FAILURE";
+
+export interface TransferToKucoinAccount {
+  amount: number;
+  currency: string;
+  refAccountType: RefAccountType;
+}
+
+export interface TransferResponse {
+  applyId: string;
+  bizNo: string;
+  payAccountType: string;
+  payTag: string;
+  remark: string;
+  recAccountType: RefAccountType;
+  recTag: string;
+  recRemark: string;
+  recSystem: string;
+  status: Status;
+  currency: string;
+  amount: string;
+  fee: string;
+  sn: number;
+  reason: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface TransferRecord {
+  applyId:   string;
+  currency:  string;
+  recRemark: string;
+  recSystem: string;
+  status:    Status;
+  amount:    string;
+  reason:    string;
+  offset:    number;
+  createdAt: number;
+  remark:    string;
+}
+
+export interface CurrencyPageQuery {
+  startAt?: number;
+  endAt?: number;
+  pageSize?: number;
+  currentPage?: number;
+  status?: Status;
+  currency?: string;
+}
+
 export interface Paged<T> {
   hasMore: boolean;
   dataList: T[];
+}
+
+export interface DetailedPage<T> {
+  currentPage: number;
+  pageSize: number;
+  totalNum: number;
+  totalPage: number;
+  items: T[];
+}
+
+export interface Apply {
+  applyId: string;
 }
 
 export enum ResponseCode {

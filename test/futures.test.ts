@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { FuturesClient } from "./../src/futures-client";
 import * as dotenv from "dotenv";
-import * as CryptoJs from "crypto-js";
 import { ResponseCode } from "../src/types/shared";
 
 dotenv.config();
@@ -25,15 +24,15 @@ describe("Futures REST API client", () => {
   describe("User endpoints", () => {
     describe("Account endpoints", () => {
       it("gets account overview", async () => {
-        const response = await api.getAccountOverview();
+        const response = await api.user.getAccountOverview();
         expect(response.code).to.be.equal(ResponseCode.OK);
       });
       it("gets account overview with symbol", async () => {
-        const response = await api.getAccountOverview({currency: "USDT"});
+        const response = await api.user.getAccountOverview({ currency: "USDT" });
         expect(response.code).to.be.equal(ResponseCode.OK);
       });
       it("gets transaction history", async () => {
-        const response = await api.getTxHistory();
+        const response = await api.user.getTxHistory();
         expect(response.code).to.be.equal(ResponseCode.OK);
       });
     });

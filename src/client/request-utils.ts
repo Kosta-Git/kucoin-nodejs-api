@@ -1,6 +1,5 @@
-import { hmac256, hmac256Request } from "./../crypto/crypto-utils";
+import { hmac256Request } from "./../crypto/crypto-utils";
 import { RestClientOptions } from "./rest-client-options";
-import * as CryptoJs from "crypto-js";
 
 export type KucoinBaseUrlKey = "futures" | "futures-test";
 
